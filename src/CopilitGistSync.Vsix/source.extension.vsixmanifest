@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
     <Metadata>
-        <Identity Id="CopilotInstructionsFromGist.6e8511e7-a595-4aa8-9a90-65bc37ac19a4" Version="0.1.1" Language="en-US" Publisher="Rogier Verkaik" />
+        <Identity Id="CopilotInstructionsFromGist.6e8511e7-a595-4aa8-9a90-65bc37ac19a4" Version="0.1.2" Language="en-US" Publisher="Rogier Verkaik" />
         <DisplayName>Copilot Instructions from Gist</DisplayName>
         <Description xml:space="preserve">Sync copilot-instructions.md from a public GitHub Gist into the .github folder of your repository.</Description>
         <Icon>icon.png</Icon>

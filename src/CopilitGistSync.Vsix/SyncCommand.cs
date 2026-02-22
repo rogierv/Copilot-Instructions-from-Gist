@@ -74,7 +74,7 @@ internal sealed class SyncCommand
 
         if (dte?.Solution == null || !dte.Solution.IsOpen)
         {
-            ShowMessage("No solution is open.");
+            ShowMessage("No solution is open...");
             return;
         }
 
