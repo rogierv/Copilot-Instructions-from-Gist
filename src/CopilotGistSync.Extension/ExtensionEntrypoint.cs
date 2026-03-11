@@ -16,7 +16,7 @@ internal class ExtensionEntrypoint : Microsoft.VisualStudio.Extensibility.Extens
         Metadata = new(
                 id: "CopilotGistSync.Extension.4cbb8886-6e67-467b-b7e3-9ae9de67496f",
                 version: this.ExtensionAssemblyVersion,
-                publisherName: "Publisher name",
+                publisherName: "Rogier Verkaik",
                 displayName: "GitHub Copilot Gist Sync",
                 description: "Syncs GitHub Copilot instructions from a GitHub Gist to your solution"),
     };

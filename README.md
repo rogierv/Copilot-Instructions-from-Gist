@@ -316,18 +316,6 @@ This extension is built with the following principles in mind:
 
 ---
 
-## 🤝 Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
----
-
 ## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
@@ -339,40 +327,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 **Rogier Verkaik**
 
 - GitHub: [@rogierv](https://github.com/rogierv)
-
----
-
-## 🙏 Acknowledgments
-
-- Thanks to the Visual Studio Extensibility team for their excellent documentation
-- Inspired by the need to maintain consistency across multiple repositories
-- Built to solve a real problem that many developers face daily
-
----
-
-## 📸 Screenshots
-
-> **Note**: Screenshots marked as missing need to be created. See the instructions below for each screenshot.
-
-### Configuration Dialog
-**Status**: ⏳ *Screenshot needed*
-
-To create this screenshot:
-1. Open Visual Studio 2022
-2. Go to **Tools** → **Options**
-3. Navigate to **GitHub Copilot Gist Sync** in the left panel
-4. Take a screenshot showing the configuration options
-5. Save as `docs/screenshots/options-config.png`
-
-### Manual Sync Command
-**Status**: ⏳ *Screenshot needed*
-
-To create this screenshot:
-1. Open Visual Studio 2022
-2. Click on the **Tools** menu
-3. Hover over **Sync Copilot Instructions**
-4. Take a screenshot of the expanded menu
-5. Save as `docs/screenshots/manual-sync.png`
 
 ---
 

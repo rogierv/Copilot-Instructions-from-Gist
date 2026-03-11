@@ -1,0 +1,45 @@
+name: Publish VSIX
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build-and-publish:
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Install Visual Studio Build tools
+        uses: microsoft/setup-msbuild@v1
+
+      - name: Build Release
+        run: dotnet build -c Release src\CopilotGistSync.Extension\CopilotGistSync.Extension.csproj
+
+      - name: Find VSIX
+        id: find_vsix
+        run: |
+          echo "VSIX_PATH=$(Get-ChildItem -Path src\CopilotGistSync.Extension\bin\Release -Recurse -Filter *.vsix | Select-Object -First 1 | ForEach-Object { $_.FullName })" | Out-File -FilePath vsixpath.txt -Encoding ASCII
+          echo "VSIX_PATH=$(Get-Content vsixpath.txt)"
+          echo "VSIX_PATH=$(cat vsixpath.txt)" 
+          echo "::set-output name=vsix_path::$(cat vsixpath.txt)"
+
+      - name: Publish VSIX
+        env:
+          VSIX_PUBLISHER: ${{ secrets.VSIX_PUBLISHER }}
+          VSIX_PAT: ${{ secrets.VSIX_PAT }}
+        run: |
+          $vsix = "${{ steps.find_vsix.outputs.vsix_path }}"
+          if (-not (Test-Path $vsix)) { Write-Error "VSIX not found: $vsix"; exit 1 }
+          # Find VSIXPublisher.exe in Visual Studio path
+          $possible = Get-ChildItem "C:\Program Files (x86)\Microsoft Visual Studio\*\Common7\IDE\VSIXPublisher.exe" -Recurse -ErrorAction SilentlyContinue | Select-Object -First 1
+          if (-not $possible) { Write-Error "VSIXPublisher.exe not found on runner"; exit 1 }
+          & $possible.FullName publish -payload $vsix -publisher $env:VSIX_PUBLISHER -pat $env:VSIX_PAT

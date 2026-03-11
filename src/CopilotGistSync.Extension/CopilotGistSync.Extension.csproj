@@ -4,6 +4,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <NoWarn>$(NoWarn);VSEXTPREVIEW_SETTINGS</NoWarn>
+		<Version>1.0.1</Version>
   </PropertyGroup>
 
   <ItemGroup>
