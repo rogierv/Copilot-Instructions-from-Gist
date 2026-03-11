@@ -1,4 +1,4 @@
-﻿# Copilot Instructions from Gist
+# GitHub Copilot Gist Sync
 
 <div align="center">
   <img src="docs/screenshots/icon.png" alt="Extension Icon" width="128" height="128">
@@ -9,22 +9,28 @@
 
 ## 🎯 What is this?
 
-**Copilot Instructions from Gist** is a Visual Studio extension that automatically syncs `copilot-instructions.md` from a GitHub Gist (public or secret) into your repository''s `.github` folder. 
+**GitHub Copilot Gist Sync** is a Visual Studio extension that automatically syncs `copilot-instructions.md` from a GitHub Gist (public or secret) into your repository's `.github` folder.
 
 No more copying and pasting instructions between projects. Create one Gist, configure once, and all your repositories stay in sync!
+
+---
 
 ## 🤔 Why Was This Built?
 
 **The Problem**: GitHub Copilot currently doesn't support global instruction files or shared instruction files across teams. If you work with multiple repositories, you need to manually copy and maintain `copilot-instructions.md` in each project's `.github` folder. This becomes cumbersome and error-prone, especially when:
-- You have dozens of repositories
-- Your team wants to share common coding standards
-- You need to update instructions across all projects
+
+- 📂 You have dozens of repositories to manage
+- 👥 Your team wants to share common coding standards
+- 🔄 You need to update instructions across all projects simultaneously
+- ⏱️ You're wasting time copying files between projects
 
 **The Solution**: This extension enables you to:
+
 - 📝 **Define once, use everywhere** - Maintain a single source of truth in a GitHub Gist
-- 👥 **Share with your team** - Use secret gists to share team-wide instructions
+- 👥 **Share with your team** - Use secret gists to share team-wide instructions privately
 - 🔄 **Stay synchronized** - Automatically sync instructions across all your repositories
 - ⚡ **Save time** - No more manual copying and pasting
+- 🔒 **Privacy control** - Support for both public and secret gists
 
 ---
 
@@ -63,15 +69,16 @@ No more copying and pasting instructions between projects. Create one Gist, conf
 
 ## ⚙️ Configuration
 
-### Step 1: Create a Gist
+### Step 1: Create a GitHub Gist
 
 1. Go to [gist.github.com](https://gist.github.com)
 2. Create a new Gist (can be **public** or **secret**)
    - **Public**: Anyone can see it (no authentication needed)
    - **Secret**: Only people with the link can access it (great for team sharing)
 3. Name the file exactly: `copilot-instructions.md`
-4. Add your Copilot instructions
-5. Copy the Gist URL (e.g., `https://gist.github.com/username/1234567890abcdef`)
+4. Add your Copilot instructions (see examples below)
+5. Click "Create secret gist" or "Create public gist"
+6. Copy the Gist URL (e.g., `https://gist.github.com/username/1234567890abcdef`)
 
 > **💡 Tip**: You can use either the Gist URL or the raw URL format: `https://gist.githubusercontent.com/username/1234567890abcdef/raw/copilot-instructions.md`
 
@@ -86,7 +93,6 @@ No more copying and pasting instructions between projects. Create one Gist, conf
 5. Click **OK** to save
 
 ![Configuration Screenshot](docs/screenshots/options-config.png)
-*Screenshot: Configuration options in Visual Studio (Tools → Options → GitHub Copilot Gist Sync)*
 
 ---
 
@@ -101,7 +107,6 @@ Sync your Copilot instructions at any time:
 3. Check the Visual Studio status bar for progress
 
 ![Manual Sync Screenshot](docs/screenshots/manual-sync.png)
-*Screenshot: Manual sync command in Tools menu*
 
 ### Automatic Synchronization
 
@@ -126,7 +131,7 @@ When **Auto Sync on Solution Open** is enabled:
 
 **Important**: 
 - The extension **only reads** from your Gist (never writes)
-- The `.github` folder will be created if it doesn''t exist
+- The `.github` folder will be created if it doesn't exist
 - Files are only updated when content actually changes (no unnecessary Git diffs)
 
 ### Flow Diagram
@@ -164,7 +169,6 @@ When **Auto Sync on Solution Open** is enabled:
 ## 🛠️ Requirements
 
 - **Visual Studio 2022** (version 17.0 or later)
-- **.NET Framework 4.7.2** (typically already installed with VS)
 - A **GitHub Gist** (public or secret) containing a file named `copilot-instructions.md`
 
 ---
@@ -173,31 +177,44 @@ When **Auto Sync on Solution Open** is enabled:
 
 Your Gist (public or secret) should contain a file named exactly `copilot-instructions.md`:
 
-```
-📄 copilot-instructions.md
-```
-
 **Example content**:
 
 ```markdown
 # Coding Standards
 
-- Use C# 11 features where appropriate
+- Use C# 12 features where appropriate
 - Follow Microsoft naming conventions
 - Write XML documentation for public APIs
 - Prefer async/await for I/O operations
+- Use primary constructors where applicable
 
 # Project Conventions
 
 - Use file-scoped namespaces
 - Enable nullable reference types
 - Target .NET 8.0 for new projects
+- Use collection expressions for initializations
 
 # Architecture Patterns
 
 - Follow SOLID principles
 - Use dependency injection
 - Implement repository pattern for data access
+- Prefer immutable types where possible
+
+# Testing Standards
+
+- Write unit tests for all public APIs
+- Use xUnit as the testing framework
+- Aim for >80% code coverage
+- Use descriptive test method names
+
+# Security Guidelines
+
+- Never hardcode secrets or connection strings
+- Use User Secrets for local development
+- Use Azure Key Vault for production secrets
+- Validate all user inputs
 ```
 
 ---
@@ -218,33 +235,71 @@ GitHub Copilot automatically reads `.github/copilot-instructions.md` to provide 
 
 ---
 
+## 💡 Use Cases
+
+### Personal Developers
+- ✅ Maintain consistent coding standards across all your personal projects
+- ✅ Define your preferred patterns and practices once
+- ✅ Automatically apply them to every repository you work on
+- ✅ Keep your coding style consistent
+
+### Teams & Organizations
+- ✅ Share team-wide coding standards using a secret gist
+- ✅ Ensure all team members have the same Copilot instructions
+- ✅ Update instructions once, sync to all team repositories
+- ✅ Onboard new developers with standardized AI assistance
+- ✅ Enforce architectural patterns across projects
+- ✅ Maintain compliance with company coding guidelines
+
+### Example Team Workflow
+1. Team lead creates a secret gist with team coding standards
+2. Team lead shares the gist URL with the team (via internal docs/wiki)
+3. Each team member configures the extension with the same gist URL
+4. Everyone gets the same Copilot instructions across all team repositories
+5. When standards are updated in the gist, everyone's projects sync automatically
+
+---
+
 ## 🔍 Troubleshooting
 
 ### "No Gist URL configured" message
 
 **Solution**: Configure the Gist URL in **Tools → Options → GitHub Copilot Gist Sync**
 
-### Sync doesn''t happen automatically
+### Sync doesn't happen automatically
 
-**Solution**: 
-1. Check that **Auto Sync on Solution Open** is enabled
+**Solutions**: 
+1. Check that **Auto Sync on Solution Open** is enabled in options
 2. Verify your Gist URL is correct
 3. Ensure the Gist URL is accessible (public or you have the secret link)
+4. Restart Visual Studio after changing options
 
-### File isn''t updating
+### File isn't updating
 
-**Solution**:
+**Solutions**:
 1. Verify your Gist contains a file named exactly `copilot-instructions.md`
 2. Check that the Gist URL is accessible in a browser
 3. Try running **Tools → Sync Copilot Instructions** manually
+4. Check the Visual Studio Output window for error messages
 
 ### "Failed to download Gist" error
 
-**Solution**:
-1. Verify the Gist URL is correct
-2. Make sure you have access to the Gist (public gists work for everyone, secret gists require the correct URL)
+**Solutions**:
+1. Verify the Gist URL is correct (copy it from your browser)
+2. Make sure you have access to the Gist:
+   - Public gists work for everyone
+   - Secret gists require the exact URL (including the ID)
 3. Check your internet connection
-4. Try accessing the Gist URL directly in a browser
+4. Try accessing the Gist URL directly in a browser to verify it works
+5. If using a corporate network, check if GitHub is accessible
+
+### Copilot isn't using the instructions
+
+**Solutions**:
+1. Ensure the file is created at `.github/copilot-instructions.md`
+2. Restart GitHub Copilot in Visual Studio
+3. Check that GitHub Copilot is properly configured and authenticated
+4. Verify the content in the file is valid markdown
 
 ---
 
@@ -257,6 +312,7 @@ This extension is built with the following principles in mind:
 - **No unnecessary Git diffs** - Files are only updated when content changes
 - **No blocking UI** - All operations run asynchronously
 - **Minimal user interruption** - Auto-sync runs silently in the background
+- **Privacy first** - Support for secret gists ensures team privacy
 
 ---
 
@@ -266,7 +322,7 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 1. Fork the repository
 2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m ''Add some AmazingFeature''`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
 4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
@@ -286,48 +342,38 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-## 💡 Use Cases
+## 🙏 Acknowledgments
 
-### Personal Developers
-- Maintain consistent coding standards across all your personal projects
-- Define your preferred patterns and practices once
-- Automatically apply them to every repository you work on
-
-### Teams & Organizations
-- Share team-wide coding standards using a secret gist
-- Ensure all team members have the same Copilot instructions
-- Update instructions once, sync to all team repositories
-- Onboard new developers with standardized AI assistance
-
-### Multiple Projects
-- No more copying `copilot-instructions.md` between repositories
-- Update once in your Gist, sync everywhere
-- Keep dozens or hundreds of repositories in sync effortlessly
-
-**One source of truth. Many repositories. Zero hassle.**
+- Thanks to the Visual Studio Extensibility team for their excellent documentation
+- Inspired by the need to maintain consistency across multiple repositories
+- Built to solve a real problem that many developers face daily
 
 ---
 
-## 🙋 FAQ
+## 📸 Screenshots
 
-**Q: Can I use a secret/private Gist?**  
-A: Yes! The extension supports both public and secret gists. Secret gists are perfect for sharing team-specific instructions without making them publicly visible.
+> **Note**: Screenshots marked as missing need to be created. See the instructions below for each screenshot.
 
-**Q: Will this modify my Gist?**  
-A: No! The synchronization is strictly one-way (Gist → Repository). Your Gist is never modified.
+### Configuration Dialog
+**Status**: ⏳ *Screenshot needed*
 
-**Q: What if my repository already has a `copilot-instructions.md` file?**  
-A: The extension will overwrite it with the content from your Gist if it differs.
+To create this screenshot:
+1. Open Visual Studio 2022
+2. Go to **Tools** → **Options**
+3. Navigate to **GitHub Copilot Gist Sync** in the left panel
+4. Take a screenshot showing the configuration options
+5. Save as `docs/screenshots/options-config.png`
 
-**Q: Can I sync multiple Gists to different repositories?**  
-A: You configure one Gist URL per Visual Studio instance. Each repository opened in that instance will sync from the same Gist.
+### Manual Sync Command
+**Status**: ⏳ *Screenshot needed*
 
-**Q: Does this work with GitHub Copilot Chat?**  
-A: Yes! GitHub Copilot (both inline and chat) uses `.github/copilot-instructions.md` for context.
+To create this screenshot:
+1. Open Visual Studio 2022
+2. Click on the **Tools** menu
+3. Hover over **Sync Copilot Instructions**
+4. Take a screenshot of the expanded menu
+5. Save as `docs/screenshots/manual-sync.png`
 
 ---
 
-<div align="center">
-  <p>Made with ❤️ for the Visual Studio community</p>
-  <p>⭐ If you find this useful, please star the repository!</p>
-</div>
+**Made with ❤️ to make developers' lives easier**
