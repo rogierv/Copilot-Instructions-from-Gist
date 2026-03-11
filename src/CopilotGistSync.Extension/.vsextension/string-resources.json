@@ -2,7 +2,7 @@
   "CopilotGistSync.Extension.Menu.DisplayName": "GitHub Copilot Instructions",
   "CopilotGistSync.Extension.SyncCommand.DisplayName": "Sync",
   "CopilotGistSync.Extension.SettingsCommand.DisplayName": "Settings...",
-  "CopilotGistSync.Extension.Settings.Category": "Copilot Gist Sync",
+  "CopilotGistSync.Extension.Settings.Category": "GitHub Copilot Gist Sync",
   "CopilotGistSync.Extension.Settings.Category.Description": "Configure syncing of GitHub Copilot instructions from a Gist",
   "CopilotGistSync.Extension.Settings.GistUrl": "Gist URL",
   "CopilotGistSync.Extension.Settings.GistUrl.Description": "Public GitHub Gist URL containing copilot-instructions.md (e.g., https://gist.github.com/username/abc123)",
