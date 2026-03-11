@@ -12,7 +12,7 @@ namespace CopilotGistSync.Vsix;
 
 [PackageRegistration(UseManagedResourcesOnly = true, AllowsBackgroundLoading = true)]
 [ProvideAutoLoad(UIContextGuids80.SolutionExists, PackageAutoLoadFlags.BackgroundLoad)]
-[ProvideOptionPage(typeof(GeneralOptions), "Copilot Gist Sync", "General", 0, 0, true)]
+[ProvideOptionPage(typeof(GeneralOptions), "GitHub Copilot Gist Sync", "General", 0, 0, true)]
 [Guid(PackageGuidString)]
 [ProvideMenuResource("Menus.ctmenu", 1)]
 public sealed class CopilotInstructionsFromGistPackage : AsyncPackage
