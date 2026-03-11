@@ -1,8 +1,6 @@
 <Solution>
-  <Folder Name="/Solution Items/">
-    <File Path="README.md" />
-  </Folder>
   <Folder Name="/src/">
+    <File Path="README.md" />
     <Project Path="src/CopilotGistSync.Core/CopilotGistSync.Core.csproj" />
     <Project Path="src/CopilotGistSync.Extension/CopilotGistSync.Extension.csproj" Id="525d8438-7e31-4748-b0c4-c39331c5d8fa" />
   </Folder>
